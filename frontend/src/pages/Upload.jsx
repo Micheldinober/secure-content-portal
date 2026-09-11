@@ -70,7 +70,7 @@ const Upload = () => {
       formData.append("file", file);
 
       const response = await fetch(
-        "http://localhost:5000/api/content",
+        "http://localhost:5000/api/content/upload",
         {
           method: "POST",
           credentials: "include",

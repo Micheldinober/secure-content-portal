@@ -47,6 +47,15 @@ function Profile() {
       "http://localhost:5000/api/auth/logout";
   };
 
+  // Get first letter of user's name
+  const getInitial = () => {
+    if (!user?.name) {
+      return "U";
+    }
+
+    return user.name.charAt(0).toUpperCase();
+  };
+
   if (loading) {
     return (
       <div className="profile-loading">
@@ -60,151 +69,203 @@ function Profile() {
     return null;
   }
 
-  const isAdmin = user.role === "admin";
+  const isAdmin =
+    user.role?.toLowerCase() === "admin";
 
-  const getInitial = () => {
-    if (user.name) {
-      return user.name.charAt(0).toUpperCase();
-    }
-
-    return "U";
-  };
+  const initial = getInitial();
 
   return (
     <div className="profile-layout">
 
-      {/* ================= SIDEBAR ================= */}
+      {/* =====================================================
+          SIDEBAR
+      ===================================================== */}
+
       <aside className="profile-sidebar">
 
+        {/* Brand */}
         <div className="sidebar-brand">
-          <div className="brand-icon">🔐</div>
-          <span>Secure Portal</span>
+          <div className="brand-icon">
+            🔐
+          </div>
+
+          <span>
+            Secure Portal
+          </span>
         </div>
 
+        {/* Navigation */}
         <nav className="sidebar-navigation">
 
           {/* Dashboard */}
           <button
+            type="button"
             className="sidebar-link"
-            onClick={() => navigate("/dashboard")}
+            onClick={() =>
+              navigate("/dashboard")
+            }
           >
-            <span className="sidebar-icon">🏠</span>
-            <span>Dashboard</span>
+            <span className="sidebar-icon">
+              🏠
+            </span>
+
+            <span>
+              Dashboard
+            </span>
           </button>
 
-          {/* My Content REMOVED */}
-
-          {/* Upload Content */}
+          {/* Upload Content - Admin only */}
           {isAdmin && (
             <button
+              type="button"
               className="sidebar-link"
-              onClick={() => navigate("/upload")}
+              onClick={() =>
+                navigate("/upload")
+              }
             >
-              <span className="sidebar-icon">⬆️</span>
-              <span>Upload Content</span>
+              <span className="sidebar-icon">
+                ⬆️
+              </span>
+
+              <span>
+                Upload Content
+              </span>
             </button>
           )}
 
-          {/* Users */}
+          {/* Users - Admin only */}
           {isAdmin && (
             <button
+              type="button"
               className="sidebar-link"
-              onClick={() => navigate("/users")}
+              onClick={() =>
+                navigate("/users")
+              }
             >
-              <span className="sidebar-icon">👥</span>
-              <span>Users</span>
+              <span className="sidebar-icon">
+                👥
+              </span>
+
+              <span>
+                Users
+              </span>
             </button>
           )}
 
           {/* Profile */}
           <button
+            type="button"
             className="sidebar-link active"
-            onClick={() => navigate("/profile")}
+            onClick={() =>
+              navigate("/profile")
+            }
           >
-            <span className="sidebar-icon">👤</span>
-            <span>Profile</span>
+            <span className="sidebar-icon">
+              👤
+            </span>
+
+            <span>
+              Profile
+            </span>
           </button>
 
           {/* Logout */}
           <button
+            type="button"
             className="sidebar-link logout-link"
             onClick={handleLogout}
           >
-            <span className="sidebar-icon">🚪</span>
-            <span>Logout</span>
+            <span className="sidebar-icon">
+              🚪
+            </span>
+
+            <span>
+              Logout
+            </span>
           </button>
 
         </nav>
       </aside>
 
-      {/* ================= MAIN CONTENT ================= */}
+
+      {/* =====================================================
+          MAIN CONTENT
+      ===================================================== */}
+
       <main className="profile-main">
 
-        {/* Header */}
+        {/* ===================================================
+            HEADER
+        =================================================== */}
+
         <header className="profile-page-header">
 
-          <div>
-            <h1>My Profile</h1>
+          <div className="page-heading">
+
+            <h1>
+              My Profile
+            </h1>
 
             <p>
               Manage and view your account information.
             </p>
+
           </div>
+
 
           {/* Header User */}
           <div className="header-user">
 
-            {user.profilePicture ? (
-              <img
-                src={user.profilePicture}
-                alt="Profile"
-                className="header-profile-image"
-              />
-            ) : (
-              <div className="header-profile-placeholder">
-                {getInitial()}
-              </div>
-            )}
+            {/* FIRST LETTER ONLY */}
+            <div className="header-profile-placeholder">
+              {initial}
+            </div>
 
             <div className="header-user-info">
-              <strong>{user.name}</strong>
+
+              <strong>
+                {user.name}
+              </strong>
 
               <span>
-                {isAdmin ? "Administrator" : "Viewer"}
+                {isAdmin
+                  ? "Administrator"
+                  : "Viewer"}
               </span>
+
             </div>
 
           </div>
 
         </header>
 
-        {/* ================= PROFILE CARD ================= */}
+
+        {/* ===================================================
+            PROFILE CARD
+        =================================================== */}
+
         <section className="profile-card">
 
-          {/* Profile Identity */}
+          {/* Identity */}
           <div className="profile-identity">
 
+            {/* FIRST LETTER ONLY */}
             <div className="profile-picture-wrapper">
 
-              {user.profilePicture ? (
-                <img
-                  src={user.profilePicture}
-                  alt="Profile"
-                  className="profile-picture"
-                />
-              ) : (
-                <div className="profile-picture-placeholder">
-                  {getInitial()}
-                </div>
-              )}
+              <div className="profile-picture-placeholder">
+                {initial}
+              </div>
 
               <div className="online-indicator"></div>
 
             </div>
 
+
             <div className="profile-identity-info">
 
-              <h2>{user.name}</h2>
+              <h2>
+                {user.name}
+              </h2>
 
               <span
                 className={`role-badge ${
@@ -213,16 +274,21 @@ function Profile() {
                     : "viewer-role"
                 }`}
               >
-                {isAdmin ? "Administrator" : "Viewer"}
+                {isAdmin
+                  ? "Administrator"
+                  : "Viewer"}
               </span>
 
             </div>
 
           </div>
 
+
+          {/* Divider */}
           <div className="profile-divider"></div>
 
-          {/* ================= INFORMATION GRID ================= */}
+
+          {/* Information Grid */}
           <div className="profile-info-grid">
 
             {/* Full Name */}
@@ -235,7 +301,7 @@ function Profile() {
               <div className="info-content">
 
                 <span className="info-label">
-                  Full Name
+                  FULL NAME
                 </span>
 
                 <strong>
@@ -245,6 +311,7 @@ function Profile() {
               </div>
 
             </div>
+
 
             {/* Email */}
             <div className="profile-info-card">
@@ -256,7 +323,7 @@ function Profile() {
               <div className="info-content">
 
                 <span className="info-label">
-                  Email Address
+                  EMAIL ADDRESS
                 </span>
 
                 <strong className="email-value">
@@ -267,7 +334,8 @@ function Profile() {
 
             </div>
 
-            {/* Account Role */}
+
+            {/* Role */}
             <div className="profile-info-card">
 
               <div className="info-icon">
@@ -277,7 +345,7 @@ function Profile() {
               <div className="info-content">
 
                 <span className="info-label">
-                  Account Role
+                  ACCOUNT ROLE
                 </span>
 
                 <strong>
@@ -290,7 +358,8 @@ function Profile() {
 
             </div>
 
-            {/* Account Status */}
+
+            {/* Status */}
             <div className="profile-info-card">
 
               <div className="info-icon status-icon">
@@ -300,7 +369,7 @@ function Profile() {
               <div className="info-content">
 
                 <span className="info-label">
-                  Account Status
+                  ACCOUNT STATUS
                 </span>
 
                 <strong className="active-status">
@@ -317,15 +386,21 @@ function Profile() {
 
           </div>
 
-          {/* ================= FOOTER ================= */}
+
+          {/* Footer */}
           <div className="profile-card-footer">
 
             <button
+              type="button"
               className="back-dashboard-button"
-              onClick={() => navigate("/dashboard")}
+              onClick={() =>
+                navigate("/dashboard")
+              }
             >
               <span>←</span>
+
               Back to Dashboard
+
             </button>
 
           </div>
