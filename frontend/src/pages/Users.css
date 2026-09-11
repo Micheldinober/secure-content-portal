@@ -1,0 +1,1284 @@
+/* =========================================================
+   USERS PAGE ONLY
+   IMPORTANT:
+   Everything is scoped under .users-page so this CSS
+   cannot change Dashboard / Upload / Profile pages.
+   ========================================================= */
+
+.users-page {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 85% 5%,
+      rgba(107, 96, 255, 0.13),
+      transparent 32%
+    ),
+    linear-gradient(
+      135deg,
+      #f5f8ff 0%,
+      #f8f9ff 48%,
+      #eef2ff 100%
+    );
+
+  color: #13274f;
+
+  font-family:
+    Inter,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  box-sizing: border-box;
+}
+
+.users-page *,
+.users-page *::before,
+.users-page *::after {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.users-page .sidebar {
+  width: 300px;
+  min-width: 300px;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 42px 20px 24px;
+
+  flex-shrink: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      #182550 0%,
+      #0c183d 55%,
+      #071432 100%
+    );
+
+  color: white;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.users-page .sidebar-logo {
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+
+  padding: 0 20px 34px;
+}
+
+.users-page .logo-icon {
+  width: 74px;
+  height: 74px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7339f4,
+      #a331ee
+    );
+
+  font-size: 34px;
+
+  box-shadow:
+    0 15px 35px rgba(74, 50, 225, 0.35);
+}
+
+.users-page .logo-text h1 {
+  margin: 0;
+
+  color: white;
+
+  font-size: 27px;
+  font-weight: 800;
+}
+
+.users-page .logo-text span {
+  display: block;
+
+  margin-top: 10px;
+
+  color: #c0c9e6;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+.users-page .sidebar-divider {
+  width: 100%;
+  height: 1px;
+
+  margin-bottom: 28px;
+
+  background: rgba(255, 255, 255, 0.13);
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.users-page .sidebar-navigation {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.users-page .sidebar-item {
+  width: 100%;
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  padding: 0 24px;
+
+  border: none;
+  border-radius: 16px;
+
+  background: transparent;
+
+  color: #d1d8ed;
+
+  font-family: inherit;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.users-page .sidebar-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.users-page .sidebar-item.active {
+  background:
+    linear-gradient(
+      135deg,
+      #316af2,
+      #5139ee
+    );
+
+  color: white;
+
+  box-shadow:
+    0 14px 30px rgba(62, 70, 235, 0.35);
+}
+
+.users-page .sidebar-icon {
+  width: 28px;
+
+  display: flex;
+  justify-content: center;
+
+  font-size: 21px;
+}
+
+
+/* =========================================================
+   SIDEBAR BOTTOM
+   ========================================================= */
+
+.users-page .sidebar-bottom {
+  margin-top: auto;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+
+/* =========================================================
+   PROTECTED CARD
+   ========================================================= */
+
+.users-page .protected-card {
+  min-height: 98px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+
+  padding: 16px 20px;
+
+  border: 1px solid rgba(87, 133, 235, 0.55);
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(35, 57, 119, 0.9),
+      rgba(26, 44, 96, 0.85)
+    );
+}
+
+.users-page .protected-icon {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 16px;
+
+  background: rgba(34, 119, 230, 0.3);
+
+  font-size: 28px;
+}
+
+.users-page .protected-text strong {
+  display: block;
+
+  color: white;
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.users-page .protected-text span {
+  display: block;
+
+  margin-top: 7px;
+
+  color: #afbfdf;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   LOGOUT
+   ========================================================= */
+
+.users-page .logout-button {
+  width: 100%;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 17px;
+
+  padding: 0 27px;
+
+  border: 1px solid rgba(224, 36, 189, 0.65);
+
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(68, 17, 83, 0.8),
+      rgba(40, 12, 68, 0.9)
+    );
+
+  color: #ef75d6;
+
+  font-family: inherit;
+
+  font-size: 16px;
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.users-page .logout-button:hover {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(82, 20, 99, 0.9),
+      rgba(50, 14, 82, 1)
+    );
+}
+
+.users-page .logout-icon {
+  font-size: 22px;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.users-page .main-content {
+  flex: 1;
+
+  min-width: 0;
+
+  height: 100vh;
+
+  padding: 30px 42px 24px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   TOP SECTION
+   ========================================================= */
+
+.users-page .top-section {
+  width: 100%;
+  height: 92px;
+
+  position: relative;
+}
+
+
+/* =========================================================
+   BREADCRUMB
+   ========================================================= */
+
+.users-page .breadcrumb {
+  position: absolute;
+
+  left: 0;
+  top: 55px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  margin: 0;
+
+  font-size: 17px;
+}
+
+.users-page .breadcrumb-light {
+  color: #6790d4;
+
+  font-weight: 500;
+}
+
+.users-page .breadcrumb-slash {
+  color: #7394cf;
+
+  font-size: 30px;
+  font-weight: 300;
+
+  line-height: 1;
+}
+
+.users-page .breadcrumb strong {
+  color: #132e5f;
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   PROFILE CARD
+   ========================================================= */
+
+.users-page .profile-summary {
+  width: 300px;
+  height: 82px;
+
+  position: absolute;
+
+  top: -13px;
+  right: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 10px 17px 10px 10px;
+
+  border: 1px solid #e3e9f5;
+
+  border-radius: 20px;
+
+  background: white;
+
+  box-shadow:
+    0 12px 30px rgba(65, 86, 140, 0.09);
+
+  z-index: 10;
+
+  cursor: pointer;
+
+  font-family: inherit;
+  text-align: left;
+
+  color: inherit;
+
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.users-page .profile-summary:hover {
+  box-shadow:
+    0 14px 35px rgba(65, 86, 140, 0.14);
+
+  transform: translateY(-1px);
+}
+
+.users-page .profile-summary:focus {
+  outline: none;
+}
+
+.users-page .profile-summary:focus-visible {
+  outline: 3px solid rgba(66, 101, 238, 0.25);
+  outline-offset: 2px;
+}
+
+.users-page .profile-avatar {
+  width: 52px;
+  height: 52px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #3670ed,
+      #5a3de5
+    );
+
+  color: white;
+
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.users-page .profile-details {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  min-width: 0;
+}
+
+.users-page .profile-details strong {
+  color: #19345f;
+
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.users-page .profile-details span {
+  margin-top: 5px;
+
+  color: #8298bf;
+
+  font-size: 13px;
+}
+
+.users-page .profile-arrow {
+  margin-left: auto;
+
+  color: #5278b8;
+
+  font-size: 30px;
+  font-weight: 300;
+}
+
+
+/* =========================================================
+   PAGE HEADING
+   ========================================================= */
+
+.users-page .page-heading {
+  width: 100%;
+
+  margin: 0;
+
+  text-align: center;
+}
+
+.users-page .page-heading h1 {
+  margin: 25px 0 0;
+
+  color: #13274f;
+
+  font-size: 42px;
+  line-height: 1.1;
+
+  font-weight: 800;
+
+  letter-spacing: -1.3px;
+}
+
+.users-page .page-heading p {
+  margin: 9px 0 0;
+
+  color: #6d91d2;
+
+  font-size: 21px;
+  line-height: 1.3;
+
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   REGISTERED USERS CARD
+   ========================================================= */
+
+.users-page .users-card {
+  width: 100%;
+
+  margin-top: 34px;
+
+  padding: 26px 30px 22px;
+
+  border: 1px solid rgba(215, 225, 244, 0.7);
+
+  border-radius: 23px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  box-shadow:
+    0 12px 35px rgba(63, 91, 145, 0.08);
+}
+
+
+/* =========================================================
+   CARD HEADER
+   ========================================================= */
+
+.users-page .users-card-header {
+  display: flex;
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 20px;
+}
+
+.users-page .users-card-title {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+}
+
+.users-page .users-card-icon {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  font-size: 23px;
+}
+
+.users-page .users-card-title h2 {
+  margin: 0;
+
+  color: #173768;
+
+  font-size: 27px;
+  font-weight: 800;
+}
+
+.users-page .users-card-title p {
+  margin: 5px 0 0;
+
+  color: #7395d1;
+
+  font-size: 17px;
+}
+
+.users-page .users-count {
+  min-width: 116px;
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 20px;
+
+  border-radius: 30px;
+
+  background: #edf4ff;
+
+  color: #1760bd;
+
+  font-size: 16px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   USERS TABLE
+   ========================================================= */
+
+.users-page .users-table {
+  width: 100%;
+
+  overflow: hidden;
+
+  border: 1px solid #dce7f8;
+
+  border-radius: 17px;
+}
+
+.users-page .users-table-header,
+.users-page .user-row {
+  display: grid;
+
+  grid-template-columns:
+    minmax(180px, 1.4fr)
+    minmax(230px, 1.8fr)
+    120px
+    110px
+    164px;
+
+  align-items: center;
+}
+
+.users-page .users-table-header {
+  min-height: 56px;
+
+  padding: 0 16px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f4f7fd,
+      #eef3fb
+    );
+
+  color: #173c74;
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.users-page .user-row {
+  min-height: 82px;
+
+  padding: 0 16px;
+
+  border-top: 1px solid #e3ebf7;
+
+  background: white;
+}
+
+.users-page .user-row:hover {
+  background: #fafbff;
+}
+
+
+/* =========================================================
+   USER INFO
+   ========================================================= */
+
+.users-page .user-info {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  min-width: 0;
+}
+
+.users-page .user-avatar {
+  width: 54px;
+  height: 54px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  color: white;
+
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.users-page .user-avatar.purple {
+  background:
+    linear-gradient(
+      135deg,
+      #812ce9,
+      #b637d1
+    );
+}
+
+.users-page .user-avatar.blue {
+  background:
+    linear-gradient(
+      135deg,
+      #3472e9,
+      #2860d2
+    );
+}
+
+.users-page .user-avatar.brown {
+  background:
+    linear-gradient(
+      135deg,
+      #80502f,
+      #9b5b25
+    );
+}
+
+.users-page .user-name {
+  min-width: 0;
+
+  color: #193562;
+
+  font-size: 16px;
+  font-weight: 800;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.users-page .user-email {
+  min-width: 0;
+
+  color: #5680c9;
+
+  font-size: 15px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   ROLE BADGES
+   ========================================================= */
+
+.users-page .role-badge {
+  width: fit-content;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 10px 17px;
+
+  border-radius: 25px;
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.users-page .role-viewer {
+  background: #e8f3ff;
+
+  color: #1761bb;
+}
+
+.users-page .role-admin {
+  background: #fff1c8;
+
+  color: #bc7a00;
+}
+
+
+/* =========================================================
+   ACCOUNT STATUS
+   ========================================================= */
+
+.users-page .status-badge {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: #09835e;
+
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.users-page .status-dot {
+  width: 13px;
+  height: 13px;
+
+  border-radius: 50%;
+
+  background: #0cc477;
+
+  box-shadow:
+    0 0 0 6px rgba(12, 196, 119, 0.12);
+}
+
+
+/* =========================================================
+   SELECT
+   ========================================================= */
+
+.users-page .role-select {
+  width: 164px;
+  height: 48px;
+
+  padding: 0 14px;
+
+  border: 1px solid #d8e3f5;
+
+  border-radius: 13px;
+
+  background: white;
+
+  color: #38547f;
+
+  font-family: inherit;
+
+  font-size: 15px;
+
+  outline: none;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 3px 10px rgba(63, 91, 145, 0.05);
+}
+
+.users-page .role-select:focus {
+  border-color: #6885e8;
+
+  box-shadow:
+    0 0 0 4px rgba(99, 120, 237, 0.1);
+}
+
+
+/* =========================================================
+   ACCESS CONTROL
+   ========================================================= */
+
+.users-page .access-control {
+  min-height: 104px;
+
+  display: flex;
+  align-items: center;
+
+  margin-top: 14px;
+
+  padding: 18px 38px;
+
+  border: 1px solid #b9d8ff;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(239, 246, 255, 0.95),
+      rgba(246, 249, 255, 0.95)
+    );
+}
+
+.users-page .access-icon {
+  width: 72px;
+
+  flex-shrink: 0;
+
+  font-size: 34px;
+}
+
+.users-page .access-content {
+  flex: 1;
+
+  text-align: center;
+}
+
+.users-page .access-content h3 {
+  margin: 0;
+
+  color: #0e4eaa;
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.users-page .access-content p {
+  margin: 7px 0 0;
+
+  color: #6690d5;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   TABLET / MEDIUM
+   ========================================================= */
+
+@media (max-width: 1250px) {
+
+  .users-page .sidebar {
+    width: 270px;
+    min-width: 270px;
+
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .users-page .main-content {
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+
+  .users-page .page-heading h1 {
+    font-size: 38px;
+  }
+
+  .users-page .page-heading p {
+    font-size: 19px;
+  }
+
+  .users-page .role-select {
+    width: 135px;
+  }
+
+  .users-page .users-table {
+    overflow-x: auto;
+  }
+
+  .users-page .users-table-header,
+  .users-page .user-row {
+    min-width: 850px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  .users-page .sidebar {
+    width: 220px;
+    min-width: 220px;
+  }
+
+  .users-page .logo-icon {
+    width: 55px;
+    height: 55px;
+
+    font-size: 26px;
+  }
+
+  .users-page .logo-text h1 {
+    font-size: 21px;
+  }
+
+  .users-page .logo-text span {
+    font-size: 9px;
+  }
+
+  .users-page .sidebar-item {
+    min-height: 52px;
+
+    padding: 0 14px;
+
+    font-size: 14px;
+  }
+
+  .users-page .main-content {
+    padding: 20px;
+  }
+
+  .users-page .profile-summary {
+    width: 270px;
+  }
+
+  .users-page .users-table {
+    overflow-x: auto;
+  }
+
+  .users-page .users-table-header,
+  .users-page .user-row {
+    min-width: 850px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  .users-page {
+    display: block;
+
+    height: auto;
+    min-height: 100vh;
+
+    overflow-y: auto;
+  }
+
+  .users-page .sidebar {
+    width: 100%;
+    min-width: 0;
+
+    height: auto;
+
+    position: relative;
+
+    padding: 18px;
+  }
+
+  .users-page .sidebar-logo {
+    justify-content: center;
+  }
+
+  .users-page .sidebar-divider {
+    margin: 18px 0;
+  }
+
+  .users-page .sidebar-navigation {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .users-page .sidebar-item {
+    min-height: 48px;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 0 10px;
+
+    font-size: 12px;
+  }
+
+  .users-page .sidebar-bottom {
+    margin-top: 18px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .users-page .protected-card {
+    min-height: 60px;
+  }
+
+  .users-page .logout-button {
+    height: 60px;
+  }
+
+  .users-page .main-content {
+    width: 100%;
+
+    height: auto;
+
+    overflow: visible;
+
+    padding: 18px;
+  }
+
+  .users-page .top-section {
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+  }
+
+  .users-page .breadcrumb {
+    position: static;
+
+    justify-content: center;
+
+    font-size: 14px;
+  }
+
+  .users-page .profile-summary {
+    position: static;
+
+    width: 100%;
+
+    margin-top: 3px;
+  }
+
+  .users-page .page-heading {
+    margin-top: 22px;
+  }
+
+  .users-page .page-heading h1 {
+    margin-top: 0;
+
+    font-size: 30px;
+  }
+
+  .users-page .page-heading p {
+    font-size: 17px;
+  }
+
+  .users-page .users-card {
+    margin-top: 25px;
+
+    padding: 18px;
+  }
+
+  .users-page .users-card-header {
+    flex-direction: column;
+  }
+
+  .users-page .users-count {
+    align-self: flex-end;
+  }
+
+  .users-page .users-table {
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .users-page .users-table-header,
+  .users-page .user-row {
+    min-width: 850px;
+  }
+
+  .users-page .access-control {
+    padding: 18px;
+  }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .users-page .main-content {
+    padding: 15px 12px 25px;
+  }
+
+  .users-page .sidebar {
+    padding: 12px;
+  }
+
+  .users-page .sidebar-item {
+    font-size: 11px;
+  }
+
+  .users-page .profile-summary {
+    height: 68px;
+  }
+
+  .users-page .profile-avatar {
+    width: 44px;
+    height: 44px;
+
+    font-size: 18px;
+  }
+
+  .users-page .profile-details strong {
+    font-size: 14px;
+  }
+
+  .users-page .profile-details span {
+    font-size: 12px;
+  }
+
+  .users-page .page-heading h1 {
+    font-size: 27px;
+  }
+
+  .users-page .page-heading p {
+    font-size: 14px;
+  }
+
+  .users-page .users-card {
+    margin-top: 20px;
+
+    padding: 15px;
+  }
+
+  .users-page .users-card-title h2 {
+    font-size: 21px;
+  }
+
+  .users-page .users-card-title p {
+    font-size: 13px;
+  }
+
+  .users-page .access-control {
+    padding: 16px;
+  }
+
+  .users-page .access-content h3 {
+    font-size: 16px;
+  }
+
+  .users-page .access-content p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+}
