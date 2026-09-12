@@ -214,6 +214,11 @@ const startServer = async () => {
           `Frontend URL: ${FRONTEND_URL}`
         );
 
+        // ADDED: Google OAuth callback URL
+        console.log(
+          `Google Callback URL: ${process.env.GOOGLE_CALLBACK_URL}`
+        );
+
         console.log(
           `Environment: ${NODE_ENV}`
         );
