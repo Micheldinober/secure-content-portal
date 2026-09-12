@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const path = require("path");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
@@ -59,6 +60,16 @@ app.use(
     origin: FRONTEND_URL,
     credentials: true,
   })
+);
+
+// --------------------------------------------------
+// Serve Public Files
+// --------------------------------------------------
+
+app.use(
+  express.static(
+    path.join(__dirname, "../public")
+  )
 );
 
 // --------------------------------------------------
@@ -214,7 +225,6 @@ const startServer = async () => {
           `Frontend URL: ${FRONTEND_URL}`
         );
 
-        // ADDED: Google OAuth callback URL
         console.log(
           `Google Callback URL: ${process.env.GOOGLE_CALLBACK_URL}`
         );
