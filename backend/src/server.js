@@ -24,16 +24,30 @@ const MONGODB_URI = process.env.MONGODB_URI;
 const FRONTEND_URL =
   process.env.FRONTEND_URL || "http://localhost:5173";
 
+const NODE_ENV =
+  process.env.NODE_ENV || "development";
+
+const IS_PRODUCTION =
+  NODE_ENV === "production";
+
 // --------------------------------------------------
 // Check MongoDB URI
 // --------------------------------------------------
 
 if (!MONGODB_URI) {
   console.error(
-    "ERROR: MONGODB_URI is not defined in .env"
+    "ERROR: MONGODB_URI is not defined."
   );
 
   process.exit(1);
+}
+
+// --------------------------------------------------
+// Trust Render Proxy
+// --------------------------------------------------
+
+if (IS_PRODUCTION) {
+  app.set("trust proxy", 1);
 }
 
 // --------------------------------------------------
@@ -80,8 +94,14 @@ app.use(
 
     cookie: {
       httpOnly: true,
-      secure: false,
-      sameSite: "lax",
+
+      // HTTPS is required for production cookies
+      secure: IS_PRODUCTION,
+
+      // Needed because frontend and backend
+      // are on different domains after deployment
+      sameSite: IS_PRODUCTION ? "none" : "lax",
+
       maxAge: 24 * 60 * 60 * 1000,
     },
   })
@@ -123,6 +143,7 @@ app.get("/", (req, res) => {
     success: true,
     message:
       "Secure Content Portal API is running",
+    environment: NODE_ENV,
   });
 });
 
@@ -183,9 +204,18 @@ const startServer = async () => {
 
     app.listen(
       PORT,
+      "0.0.0.0",
       () => {
         console.log(
-          `Server running on http://localhost:${PORT}`
+          `Server running on port ${PORT}`
+        );
+
+        console.log(
+          `Frontend URL: ${FRONTEND_URL}`
+        );
+
+        console.log(
+          `Environment: ${NODE_ENV}`
         );
       }
     );
